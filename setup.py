@@ -1,8 +1,12 @@
 from setuptools import setup, Extension
+import os
 
 def readme():
     with open('README.rst') as f:
         return f.read()
+
+os.environ["CC"] = "mpicc"
+os.environ["CXX"] = "mpicxx"
 
 ext_io = Extension(name="hio",
                              extra_link_args=['-lmpi','-lhdf5'],
